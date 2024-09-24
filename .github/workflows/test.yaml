@@ -65,10 +65,10 @@ jobs:
       - name: Install LLVM (Linux)
         run: |
           curl --proto '=https' --tlsv1.2 -sSf https://github.com/wasmerio/llvm-custom-builds/releases/download/18.x/llvm-linux-amd64.tar.xz -L -o /opt/llvm.tar.xz
-          mkdir -p /opt/llvm-15
-          tar xf /opt/llvm.tar.xz --strip-components=1 -C /opt/llvm-15
-          echo '/opt/llvm-15/bin' >> $GITHUB_PATH
-          echo 'LLVM_SYS_150_PREFIX=/opt/llvm-15' >> $GITHUB_ENV
+          mkdir -p /opt/llvm-18
+          tar xf /opt/llvm.tar.xz --strip-components=1 -C /opt/llvm-18
+          echo '/opt/llvm-18/bin' >> $GITHUB_PATH
+          echo 'LLVM_SYS_180_PREFIX=/opt/llvm-18' >> $GITHUB_ENV
       - name: Cache
         uses: whywaita/actions-cache-s3@v2
         with:
@@ -507,7 +507,7 @@ jobs:
           echo "ENABLE_LLVM=1" >> $GITHUB_ENV
           echo "${LLVM_DIR}/bin" >> $GITHUB_PATH
           echo "${LLVM_DIR}/usr/bin" >> $GITHUB_PATH
-          echo "LLVM_SYS_150_PREFIX=${LLVM_DIR}" >> $GITHUB_ENV
+          echo "LLVM_SYS_180_PREFIX=${LLVM_DIR}" >> $GITHUB_ENV
         env:
           LLVM_DIR: .llvm
       - name: Install LLVM dependencies (macOS)
