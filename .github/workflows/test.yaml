@@ -510,12 +510,11 @@ jobs:
           echo "LLVM_SYS_180_PREFIX=${LLVM_DIR}" >> $GITHUB_ENV
         env:
           LLVM_DIR: .llvm
-      - name: Add `brew` libs to `LD_LIBRARY_PATH`
+      - name: Add `brew` libs to `RUSTFLAGS`
         if: matrix.metadata.os == 'macos-14'
         shell: bash
         run: |
           echo "RUSTFLAGS=-L/opt/homebrew/lib" >> $GITHUB_ENV
-          env
       - name: Setup Rust target
         shell: bash
         run: |
@@ -716,10 +715,11 @@ jobs:
           echo "ENABLE_LLVM=1" >> $GITHUB_ENV
         env:
           LLVM_DIR: .llvm
-      - name: Install LLVM dependencies (macOS)
+      - name: Add `brew` libs to `RUSTFLAGS`
         if: matrix.metadata.os == 'macos-14'
         shell: bash
-        run: brew install zstd
+        run: |
+          echo "RUSTFLAGS=-L/opt/homebrew/lib" >> $GITHUB_ENV
       - name: Setup Rust target
         shell: bash
         run: |
