@@ -514,7 +514,7 @@ jobs:
         if: matrix.metadata.os == 'macos-14'
         shell: bash
         run: |
-          echo "LD_LIBRARY_PATH=/opt/homebrew/lib:$LD_LIBRARY_PATH" >> $GITHUB_ENV
+          echo "RUSTFLAGS=-L/opt/homebrew/lib" >> $GITHUB_ENV
           env
       - name: Setup Rust target
         shell: bash
@@ -717,7 +717,7 @@ jobs:
         env:
           LLVM_DIR: .llvm
       - name: Install LLVM dependencies (macOS)
-        if: matrix.metadata.os == 'macos-12' || matrix.metadata.os == 'macos-14'
+        if: matrix.metadata.os == 'macos-14'
         shell: bash
         run: brew install zstd
       - name: Setup Rust target
