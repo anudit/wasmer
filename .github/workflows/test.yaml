@@ -420,7 +420,7 @@ jobs:
             os: windows-2019,
             target: x86_64-pc-windows-msvc,
             exe: '.exe',
-            llvm_url: 'https://github.com/wasmerio/llvm-custom-builds/releases/download/18.x/llvm-windows-amd64.tar.xz'
+            llvm_url: 'https://github.com/llvm/llvm-project/releases/download/llvmorg-18.1.8/clang+llvm-18.1.8-x86_64-pc-windows-msvc.tar.xz' 
           },
           {
             build: linux-musl,
@@ -658,7 +658,7 @@ jobs:
             os: windows-2019,
             target: x86_64-pc-windows-msvc,
             exe: '.exe',
-            llvm_url: 'https://github.com/wasmerio/llvm-custom-builds/releases/download/18.x/llvm-windows-amd64.tar.xz'
+            llvm_url: 'https://github.com/llvm/llvm-project/releases/download/llvmorg-18.1.8/clang+llvm-18.1.8-x86_64-pc-windows-msvc.tar.xz' 
           },
           {
             build: linux-musl,
@@ -777,7 +777,7 @@ jobs:
           - build: windows-x64
             os: windows-2019
             target: x86_64-pc-windows-msvc
-            llvm_url: 'https://github.com/wasmerio/llvm-custom-builds/releases/download/18.x/llvm-windows-amd64.tar.xz'
+            llvm_url: 'https://github.com/llvm/llvm-project/releases/download/llvmorg-18.1.8/clang+llvm-18.1.8-x86_64-pc-windows-msvc.tar.xz' 
     container: ${{ matrix.container }}
     env:
       SCCACHE_AZURE_BLOB_CONTAINER: wasmerstoragesccacheblob
