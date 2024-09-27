@@ -314,6 +314,22 @@ impl VMOwnedMemory {
                 *bound
             }
         };
+
+        // XXX: Hack to work around memory limits
+        // println!("wasmer/memory.rs: Using memory hack to work around memory limits");
+        // println!("wasmer/memory.rs: Old minimum pages: {:?}", minimum_pages);
+        // println!(
+        //     "wasmer/memory.rs: Old offset guard bytes: {:?}",
+        //     offset_guard_bytes,
+        // );
+        let minimum_pages = memory.minimum;
+        let offset_guard_bytes = Pages(1).bytes().0;
+        // println!("wasmer/memory.rs: New minimum pages: {:?}", minimum_pages);
+        // println!(
+        //     "wasmer/memory.rs: New offset guard bytes: {:?}",
+        //     offset_guard_bytes,
+        // );
+
         let minimum_bytes = minimum_pages.bytes().0;
         let request_bytes = minimum_bytes.checked_add(offset_guard_bytes).unwrap();
         let mapped_pages = memory.minimum;
